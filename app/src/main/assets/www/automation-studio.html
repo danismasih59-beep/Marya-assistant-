@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
+<title>Myra AI - Automation Studio 2.0</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;700&family=Sora:wght@400;600;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet"/>
+<style>
+  body { background-color: #13131b; color: #e4e1ed; font-family: 'Be Vietnam Pro', sans-serif; min-height: 100dvh; }
+  .glass { background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(138, 235, 255, 0.2); backdrop-filter: blur(12px); }
+</style>
+</head>
+<body class="p-4 pb-24">
+
+<!-- Header -->
+<header class="flex items-center justify-between gap-3 mb-6 pt-2">
+  <div class="flex items-center gap-3">
+    <a href="index.html" class="p-2 rounded-xl bg-white/5 border border-white/10 hover:border-cyan-400 text-cyan-300">
+      <span class="material-symbols-outlined text-xl">arrow_back</span>
+    </a>
+    <div>
+      <h1 class="text-xl font-bold tracking-tight text-cyan-300" style="font-family:'Sora'">AUTOMATION_STUDIO</h1>
+      <p class="text-[10px] font-mono text-cyan-400/80">ORCHESTRATOR v2.0 • 8 ACTIVE FLOWS</p>
+    </div>
+  </div>
+  <a href="automation-new.html" class="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-cyan-400 text-black font-semibold text-xs font-mono shadow-[0_0_12px_rgba(34,211,238,0.4)]">
+    <span class="material-symbols-outlined text-base">add</span>
+    <span>New Flow</span>
+  </a>
+</header>
+
+<!-- Studio Workflows -->
+<div class="flex flex-col gap-3 mb-6">
+  <!-- Routine Card 1 -->
+  <div class="glass rounded-2xl p-4 flex flex-col gap-3 border-cyan-400/30">
+    <div class="flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-cyan-950/60 border border-cyan-400/40 flex items-center justify-center text-cyan-300">
+          <span class="material-symbols-outlined text-xl">security</span>
+        </div>
+        <div>
+          <h3 class="text-sm font-semibold text-white font-mono">Night Perimeter Overwatch</h3>
+          <p class="text-[10px] text-white/50">Triggers: 23:00 Daily • Security Bot</p>
+        </div>
+      </div>
+      <span class="px-2 py-0.5 rounded bg-cyan-950 text-cyan-300 text-[10px] font-mono border border-cyan-500/30">ENABLED</span>
+    </div>
+
+    <div class="flex items-center gap-2 text-xs font-mono text-white/70 bg-[#0d0d15] p-2.5 rounded-xl border border-white/10 overflow-x-auto">
+      <span class="text-cyan-300">Clock(23:00)</span>
+      <span>➔</span>
+      <span class="text-indigo-300">LockDoors()</span>
+      <span>➔</span>
+      <span class="text-emerald-300">ArmSensors()</span>
+      <span>➔</span>
+      <span class="text-yellow-300">SyncVault()</span>
+    </div>
+
+    <div class="flex items-center justify-between text-xs font-mono text-white/50 pt-1">
+      <span>Last run: Yesterday at 23:00:01</span>
+      <a href="automation-time.html" class="text-cyan-400 hover:underline">Edit Trigger</a>
+    </div>
+  </div>
+
+  <!-- Routine Card 2 -->
+  <div class="glass rounded-2xl p-4 flex flex-col gap-3">
+    <div class="flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-indigo-950/60 border border-indigo-400/40 flex items-center justify-center text-indigo-300">
+          <span class="material-symbols-outlined text-xl">psychology</span>
+        </div>
+        <div>
+          <h3 class="text-sm font-semibold text-white font-mono">Morning AI Briefing</h3>
+          <p class="text-[10px] text-white/50">Triggers: 07:30 Weekdays • Gemini Synthesizer</p>
+        </div>
+      </div>
+      <span class="px-2 py-0.5 rounded bg-indigo-950 text-indigo-300 text-[10px] font-mono border border-indigo-500/30">ENABLED</span>
+    </div>
+
+    <div class="flex items-center gap-2 text-xs font-mono text-white/70 bg-[#0d0d15] p-2.5 rounded-xl border border-white/10 overflow-x-auto">
+      <span class="text-cyan-300">Clock(07:30)</span>
+      <span>➔</span>
+      <span class="text-indigo-300">FetchNews()</span>
+      <span>➔</span>
+      <span class="text-emerald-300">SummarizeTitan()</span>
+      <span>➔</span>
+      <span class="text-yellow-300">SpeakAudio()</span>
+    </div>
+
+    <div class="flex items-center justify-between text-xs font-mono text-white/50 pt-1">
+      <span>Last run: Today at 07:30:00</span>
+      <a href="automation-action.html" class="text-cyan-400 hover:underline">Configure Actions</a>
+    </div>
+  </div>
+</div>
+
+<!-- Quick Navigation Bar for Automations -->
+<div class="grid grid-cols-3 gap-2 font-mono text-xs">
+  <a href="automation-new.html" class="glass rounded-xl p-3 text-center text-white/80 hover:text-cyan-300 hover:border-cyan-400">
+    <span class="material-symbols-outlined text-lg block mb-1">add_box</span>
+    <span>New Flow</span>
+  </a>
+  <a href="automation-time.html" class="glass rounded-xl p-3 text-center text-white/80 hover:text-cyan-300 hover:border-cyan-400">
+    <span class="material-symbols-outlined text-lg block mb-1">schedule</span>
+    <span>Time Config</span>
+  </a>
+  <a href="automation-action.html" class="glass rounded-xl p-3 text-center text-white/80 hover:text-cyan-300 hover:border-cyan-400">
+    <span class="material-symbols-outlined text-lg block mb-1">play_circle</span>
+    <span>Action Library</span>
+  </a>
+</div>
+
+</body>
+</html>

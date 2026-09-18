@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
+<title>Plugin Wizard - Step 3: Permissions & Security</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;700&family=Sora:wght@400;600;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet"/>
+<style>
+  body { background-color: #13131b; color: #e4e1ed; font-family: 'Be Vietnam Pro', sans-serif; min-height: 100dvh; }
+  .glass { background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(138, 235, 255, 0.2); backdrop-filter: blur(12px); }
+</style>
+</head>
+<body class="p-4 pb-24">
+
+<!-- Header -->
+<header class="flex items-center justify-between gap-3 mb-4 pt-2">
+  <div class="flex items-center gap-3">
+    <a href="plugin-wizard-2.html" class="p-2 rounded-xl bg-white/5 border border-white/10 hover:border-cyan-400 text-cyan-300">
+      <span class="material-symbols-outlined text-xl">arrow_back</span>
+    </a>
+    <div>
+      <h1 class="text-xl font-bold tracking-tight text-[#8aebff]" style="font-family:'Sora'">SANDBOX_PERMS</h1>
+      <p class="text-[10px] font-mono text-cyan-400/80">STEP 3 OF 4 • ZERO-TRUST CAPABILITIES</p>
+    </div>
+  </div>
+  <span class="text-xs font-mono text-cyan-300">Home_Security_Bot</span>
+</header>
+
+<!-- Step Progress Indicator -->
+<div class="flex items-center gap-2 mb-6">
+  <div class="flex-1 h-1.5 rounded-full bg-cyan-400"></div>
+  <div class="flex-1 h-1.5 rounded-full bg-cyan-400"></div>
+  <div class="flex-1 h-1.5 rounded-full bg-cyan-400 shadow-[0_0_8px_#22d3ee]"></div>
+  <div class="flex-1 h-1.5 rounded-full bg-white/10"></div>
+</div>
+
+<!-- Permissions Scope List -->
+<div class="glass rounded-2xl p-5 mb-6 flex flex-col gap-4">
+  <div class="flex items-center justify-between">
+    <h2 class="text-sm font-semibold text-white uppercase font-mono tracking-wider">Required Capabilities</h2>
+    <span class="text-[10px] font-mono text-emerald-400">ISOLATED ENCLAVE</span>
+  </div>
+
+  <label class="p-3.5 rounded-xl bg-[#1b1b23] border border-cyan-400/40 flex items-center justify-between cursor-pointer">
+    <div class="flex items-center gap-3">
+      <span class="material-symbols-outlined text-cyan-400">videocam</span>
+      <div>
+        <p class="text-xs font-semibold text-white">io.hardware.camera.stream</p>
+        <p class="text-[10px] text-white/50">Read frame buffers from connected IP cameras</p>
+      </div>
+    </div>
+    <input type="checkbox" checked class="w-4 h-4 accent-cyan-400 rounded"/>
+  </label>
+
+  <label class="p-3.5 rounded-xl bg-[#1b1b23] border border-cyan-400/40 flex items-center justify-between cursor-pointer">
+    <div class="flex items-center gap-3">
+      <span class="material-symbols-outlined text-cyan-400">vpn_lock</span>
+      <div>
+        <p class="text-xs font-semibold text-white">storage.secure_vault.rw</p>
+        <p class="text-[10px] text-white/50">Write encrypted incident logs to hardware enclave</p>
+      </div>
+    </div>
+    <input type="checkbox" checked class="w-4 h-4 accent-cyan-400 rounded"/>
+  </label>
+
+  <label class="p-3.5 rounded-xl bg-[#1b1b23] border border-cyan-400/40 flex items-center justify-between cursor-pointer">
+    <div class="flex items-center gap-3">
+      <span class="material-symbols-outlined text-cyan-400">notifications_active</span>
+      <div>
+        <p class="text-xs font-semibold text-white">telemetry.alerts.broadcast</p>
+        <p class="text-[10px] text-white/50">Dispatch push sirens and instant UI triggers</p>
+      </div>
+    </div>
+    <input type="checkbox" checked class="w-4 h-4 accent-cyan-400 rounded"/>
+  </label>
+
+  <label class="p-3.5 rounded-xl bg-[#1b1b23] border border-white/10 flex items-center justify-between cursor-pointer opacity-70">
+    <div class="flex items-center gap-3">
+      <span class="material-symbols-outlined text-white/40">cloud_upload</span>
+      <div>
+        <p class="text-xs font-semibold text-white">network.external.raw_socket</p>
+        <p class="text-[10px] text-white/50">Unrestricted WAN outbound socket</p>
+      </div>
+    </div>
+    <input type="checkbox" class="w-4 h-4 accent-cyan-400 rounded"/>
+  </label>
+</div>
+
+<!-- Security Audit Summary -->
+<div class="glass rounded-xl p-4 mb-6 border-emerald-500/30">
+  <div class="flex items-center gap-2 text-emerald-400 text-xs font-mono mb-1">
+    <span class="material-symbols-outlined text-base">verified_user</span>
+    <span>Zero-Trust Policy Passed</span>
+  </div>
+  <p class="text-[11px] text-white/60">No high-risk outbound network permissions requested. Module will execute inside strict isolated WASM sandbox.</p>
+</div>
+
+<!-- Bottom Navigation -->
+<div class="flex items-center justify-between gap-4">
+  <a href="plugin-wizard-2.html" class="px-5 py-3 rounded-xl bg-white/5 border border-white/10 text-xs font-mono text-white/70">
+    Back
+  </a>
+  <a href="plugin-wizard-4.html" class="flex-1 px-5 py-3 rounded-xl bg-cyan-400 hover:bg-cyan-300 text-black font-semibold text-sm text-center font-mono shadow-[0_0_15px_rgba(34,211,238,0.4)] flex items-center justify-center gap-2">
+    <span>Next: Review &amp; Deploy</span>
+    <span class="material-symbols-outlined text-base">arrow_forward</span>
+  </a>
+</div>
+
+</body>
+</html>

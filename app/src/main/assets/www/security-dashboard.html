@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
+<title>Myra AI - Overwatch Security</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;700&family=Sora:wght@400;600;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet"/>
+<style>
+  body { background-color: #13131b; color: #e4e1ed; font-family: 'Be Vietnam Pro', sans-serif; min-height: 100dvh; }
+  .glass { background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(138, 235, 255, 0.2); backdrop-filter: blur(12px); }
+</style>
+</head>
+<body class="p-4 pb-24">
+
+<!-- Header -->
+<header class="flex items-center justify-between gap-3 mb-6 pt-2">
+  <div class="flex items-center gap-3">
+    <a href="index.html" class="p-2 rounded-xl bg-white/5 border border-white/10 hover:border-cyan-400 text-cyan-300">
+      <span class="material-symbols-outlined text-xl">arrow_back</span>
+    </a>
+    <div>
+      <h1 class="text-xl font-bold tracking-tight text-emerald-300" style="font-family:'Sora'">OVERWATCH_SEC</h1>
+      <p class="text-[10px] font-mono text-emerald-400/80">SHIELD LVL 5 • ZERO THREATS</p>
+    </div>
+  </div>
+  <span class="px-2.5 py-1 rounded-full bg-emerald-950/70 text-emerald-300 border border-emerald-500/30 text-xs font-mono">ENCLAVE ACTIVE</span>
+</header>
+
+<!-- Threat Status Hero -->
+<div class="glass rounded-2xl p-5 mb-6 border-emerald-500/30 relative overflow-hidden">
+  <div class="absolute -right-8 -top-8 w-28 h-28 bg-emerald-500/10 rounded-full blur-xl pointer-events-none"></div>
+  <div class="flex items-center justify-between">
+    <div>
+      <span class="text-xs font-mono text-emerald-400 uppercase tracking-wider">Perimeter Defense Status</span>
+      <h2 class="text-2xl font-bold text-white mt-1" style="font-family:'Sora'">All Nodes Fortified</h2>
+      <p class="text-xs text-white/60 mt-1">2,410 requests inspected • 0 policy breaches</p>
+    </div>
+    <div class="w-14 h-14 rounded-2xl bg-emerald-950/60 border border-emerald-400/40 flex items-center justify-center text-emerald-400">
+      <span class="material-symbols-outlined text-3xl">verified_user</span>
+    </div>
+  </div>
+</div>
+
+<!-- Security Pillars -->
+<div class="grid grid-cols-2 gap-3 mb-6 font-mono text-xs">
+  <div class="glass rounded-xl p-3.5 flex flex-col justify-between">
+    <span class="text-[10px] text-white/40">CRYPTOGRAPHIC VAULT</span>
+    <span class="text-sm font-bold text-white mt-1">AES-512 GCM</span>
+    <span class="text-[10px] text-emerald-400">Hardware Keystore</span>
+  </div>
+  <div class="glass rounded-xl p-3.5 flex flex-col justify-between">
+    <span class="text-[10px] text-white/40">ANOMALY DETECTOR</span>
+    <span class="text-sm font-bold text-white mt-1">Neural Heuristic</span>
+    <span class="text-[10px] text-emerald-400">0.002% False Positive</span>
+  </div>
+  <div class="glass rounded-xl p-3.5 flex flex-col justify-between">
+    <span class="text-[10px] text-white/40">SANDBOX ISOLATION</span>
+    <span class="text-sm font-bold text-white mt-1">WASM / seccomp</span>
+    <span class="text-[10px] text-cyan-300">Strict Memory Caps</span>
+  </div>
+  <div class="glass rounded-xl p-3.5 flex flex-col justify-between">
+    <span class="text-[10px] text-white/40">CERT EXPIRY</span>
+    <span class="text-sm font-bold text-white mt-1">364 DAYS</span>
+    <span class="text-[10px] text-white/50">Auto-Renewed</span>
+  </div>
+</div>
+
+<!-- Live Security Audit Stream -->
+<div class="flex items-center justify-between mb-3 px-1">
+  <h2 class="text-xs uppercase tracking-widest text-cyan-300/70 font-mono font-semibold">Incident Audit Logs</h2>
+  <span class="text-[10px] text-white/40 font-mono">STREAMING</span>
+</div>
+
+<div class="flex flex-col gap-2 mb-6 font-mono text-xs">
+  <div class="glass rounded-xl p-3 flex items-center justify-between">
+    <div class="flex items-center gap-2.5">
+      <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+      <div>
+        <p class="text-white text-[11px]">Home_Security_Bot: camera stream verified</p>
+        <p class="text-[9px] text-white/40">Hash: 8a1f...90c4 • 14ms ago</p>
+      </div>
+    </div>
+    <span class="text-emerald-400 text-[10px]">ALLOWED</span>
+  </div>
+
+  <div class="glass rounded-xl p-3 flex items-center justify-between">
+    <div class="flex items-center gap-2.5">
+      <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+      <div>
+        <p class="text-white text-[11px]">Smart_Home_Bridge: LAN discovery payload signed</p>
+        <p class="text-[9px] text-white/40">Hash: c412...22fa • 1m ago</p>
+      </div>
+    </div>
+    <span class="text-emerald-400 text-[10px]">ALLOWED</span>
+  </div>
+
+  <div class="glass rounded-xl p-3 flex items-center justify-between">
+    <div class="flex items-center gap-2.5">
+      <span class="w-2 h-2 rounded-full bg-cyan-400"></span>
+      <div>
+        <p class="text-white text-[11px]">Neural_Language_Core: context cache purge</p>
+        <p class="text-[9px] text-white/40">Zero telemetry retained • 3m ago</p>
+      </div>
+    </div>
+    <span class="text-cyan-400 text-[10px]">CLEARED</span>
+  </div>
+</div>
+
+<!-- Emergency Shield Lockdown -->
+<button onclick="alert('Lockdown Drill: All outbound sockets restricted.')" class="w-full py-3 rounded-xl bg-red-950/40 hover:bg-red-900/50 border border-red-500/40 text-red-300 font-mono text-xs flex items-center justify-center gap-2">
+  <span class="material-symbols-outlined text-base">emergency_home</span>
+  <span>Trigger Enclave Isolation Drill</span>
+</button>
+
+</body>
+</html>

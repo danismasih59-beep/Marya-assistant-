@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
+<title>Plugin Wizard - Step 4: Review & Deploy</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;700&family=Sora:wght@400;600;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet"/>
+<style>
+  body { background-color: #13131b; color: #e4e1ed; font-family: 'Be Vietnam Pro', sans-serif; min-height: 100dvh; }
+  .glass { background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(138, 235, 255, 0.2); backdrop-filter: blur(12px); }
+</style>
+</head>
+<body class="p-4 pb-24">
+
+<!-- Header -->
+<header class="flex items-center justify-between gap-3 mb-4 pt-2">
+  <div class="flex items-center gap-3">
+    <a href="plugin-wizard-3.html" class="p-2 rounded-xl bg-white/5 border border-white/10 hover:border-cyan-400 text-cyan-300">
+      <span class="material-symbols-outlined text-xl">arrow_back</span>
+    </a>
+    <div>
+      <h1 class="text-xl font-bold tracking-tight text-[#8aebff]" style="font-family:'Sora'">REVIEW_DEPLOY</h1>
+      <p class="text-[10px] font-mono text-cyan-400/80">STEP 4 OF 4 • FINAL VERIFICATION</p>
+    </div>
+  </div>
+  <span class="px-2 py-0.5 rounded bg-cyan-950 text-cyan-300 text-[10px] font-mono border border-cyan-500/30">READY</span>
+</header>
+
+<!-- Step Progress Indicator -->
+<div class="flex items-center gap-2 mb-6">
+  <div class="flex-1 h-1.5 rounded-full bg-cyan-400"></div>
+  <div class="flex-1 h-1.5 rounded-full bg-cyan-400"></div>
+  <div class="flex-1 h-1.5 rounded-full bg-cyan-400"></div>
+  <div class="flex-1 h-1.5 rounded-full bg-cyan-400 shadow-[0_0_8px_#22d3ee]"></div>
+</div>
+
+<!-- Review Card -->
+<div class="glass rounded-2xl p-5 mb-6 flex flex-col gap-4">
+  <div class="flex items-center gap-3.5 pb-4 border-b border-white/10">
+    <div class="w-12 h-12 rounded-xl bg-cyan-950/60 border border-cyan-400/50 flex items-center justify-center text-cyan-300">
+      <span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">security</span>
+    </div>
+    <div>
+      <h2 class="text-base font-bold text-white font-mono">Home_Security_Bot</h2>
+      <p class="text-xs text-white/50">v2.4.1 • EXT-MODULE (WASM)</p>
+    </div>
+  </div>
+
+  <div class="grid grid-cols-2 gap-3 text-xs font-mono">
+    <div class="p-3 rounded-xl bg-[#1b1b23]">
+      <span class="text-[10px] text-white/40 block">TARGET OS</span>
+      <span class="text-white font-semibold">Myra Core 4.2</span>
+    </div>
+    <div class="p-3 rounded-xl bg-[#1b1b23]">
+      <span class="text-[10px] text-white/40 block">ISOLATION</span>
+      <span class="text-emerald-400 font-semibold">Enclave L3</span>
+    </div>
+    <div class="p-3 rounded-xl bg-[#1b1b23]">
+      <span class="text-[10px] text-white/40 block">TRIGGERS</span>
+      <span class="text-white font-semibold">2 Active Hooks</span>
+    </div>
+    <div class="p-3 rounded-xl bg-[#1b1b23]">
+      <span class="text-[10px] text-white/40 block">PERMISSIONS</span>
+      <span class="text-cyan-300 font-semibold">3 Scopes Granted</span>
+    </div>
+  </div>
+
+  <div class="p-3 rounded-xl bg-[#0d0d15] border border-white/10 text-[11px] font-mono text-white/70">
+    <span class="text-cyan-400 font-bold">SHA-256 Checksum:</span><br/>
+    <span class="text-[9px] text-white/50 break-all">e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855</span>
+  </div>
+</div>
+
+<!-- Deployment Status (Dynamic) -->
+<div id="deployProgress" class="hidden glass rounded-xl p-4 mb-6 border-cyan-400">
+  <div class="flex items-center gap-3 mb-2">
+    <span class="w-4 h-4 border-2 border-cyan-400 border-t-transparent rounded-full animate-spin"></span>
+    <span class="text-xs font-mono text-cyan-300" id="deployMsg">Packaging WASM bytecode...</span>
+  </div>
+  <div class="w-full bg-white/10 h-1 rounded-full overflow-hidden">
+    <div id="deployBar" class="bg-cyan-400 h-full rounded-full transition-all duration-300" style="width: 15%"></div>
+  </div>
+</div>
+
+<!-- Actions -->
+<div class="flex items-center justify-between gap-4">
+  <a href="plugin-wizard-3.html" class="px-5 py-3 rounded-xl bg-white/5 border border-white/10 text-xs font-mono text-white/70">
+    Back
+  </a>
+  <button id="deployBtn" onclick="runDeployment()" class="flex-1 px-5 py-3 rounded-xl bg-cyan-400 hover:bg-cyan-300 text-black font-semibold text-sm text-center font-mono shadow-[0_0_15px_rgba(34,211,238,0.4)] flex items-center justify-center gap-2">
+    <span class="material-symbols-outlined text-base">rocket_launch</span>
+    <span>Deploy to Core SDK</span>
+  </button>
+</div>
+
+<script>
+  function runDeployment() {
+    const box = document.getElementById('deployProgress');
+    const btn = document.getElementById('deployBtn');
+    const msg = document.getElementById('deployMsg');
+    const bar = document.getElementById('deployBar');
+
+    box.classList.remove('hidden');
+    btn.disabled = true;
+    btn.classList.add('opacity-50');
+
+    setTimeout(() => {
+      bar.style.width = '45%';
+      msg.innerText = 'Verifying sandbox signatures with Overwatch...';
+    }, 800);
+
+    setTimeout(() => {
+      bar.style.width = '80%';
+      msg.innerText = 'Registering with Titan Mesh router...';
+    }, 1600);
+
+    setTimeout(() => {
+      bar.style.width = '100%';
+      msg.innerText = 'DEPLOYED! Redirecting to Plugin Manager...';
+    }, 2400);
+
+    setTimeout(() => {
+      window.location.href = 'plugin-manager.html';
+    }, 3200);
+  }
+</script>
+
+</body>
+</html>

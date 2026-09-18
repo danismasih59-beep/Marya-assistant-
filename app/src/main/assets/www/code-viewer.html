@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
+<title>Myra AI - Module Code Viewer</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;700&family=Sora:wght@400;600;700&family=Space+Grotesk:wght@400;500;700&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet"/>
+<style>
+  body { background-color: #13131b; color: #e4e1ed; font-family: 'Be Vietnam Pro', sans-serif; min-height: 100dvh; }
+  .glass { background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(138, 235, 255, 0.2); backdrop-filter: blur(12px); }
+  pre { font-family: 'Fira Code', monospace; }
+</style>
+</head>
+<body class="p-4 pb-24">
+
+<!-- Header -->
+<header class="flex items-center justify-between gap-3 mb-4 pt-2">
+  <div class="flex items-center gap-3">
+    <a href="index.html" class="p-2 rounded-xl bg-white/5 border border-white/10 hover:border-cyan-400 text-cyan-300">
+      <span class="material-symbols-outlined text-xl">arrow_back</span>
+    </a>
+    <div>
+      <h1 class="text-xl font-bold tracking-tight text-cyan-300" style="font-family:'Sora'">CODE_INSPECTOR</h1>
+      <p class="text-[10px] font-mono text-cyan-400/80">WASM &amp; RUST DECOMPILER</p>
+    </div>
+  </div>
+  <span class="px-2 py-0.5 rounded bg-cyan-950 text-cyan-300 text-xs font-mono border border-cyan-500/30">READ-ONLY</span>
+</header>
+
+<div class="glass rounded-xl p-3 mb-3 flex items-center justify-between font-mono text-xs">
+  <span class="text-white/70">src/modules/security_bot.rs</span>
+  <span class="text-emerald-400 text-[10px]">COMPILED TO WASM</span>
+</div>
+
+<div class="glass rounded-2xl p-4 mb-6 bg-[#0d0d15] overflow-x-auto text-[11px] leading-5 font-mono text-cyan-200">
+<pre><code><span class="text-pink-400">use</span> myra_sdk::prelude::*;
+<span class="text-pink-400">use</span> myra_enclave::VaultClient;
+
+<span class="text-indigo-300">#[myra_module(archetype = <span class="text-amber-300">"ext"</span>)]</span>
+<span class="text-pink-400">pub struct</span> <span class="text-yellow-300">HomeSecurityBot</span> {
+    enclave: VaultClient,
+    sensitivity: <span class="text-blue-300">f32</span>,
+}
+
+<span class="text-pink-400">impl</span> ModuleLifecycle <span class="text-pink-400">for</span> <span class="text-yellow-300">HomeSecurityBot</span> {
+    <span class="text-pink-400">fn</span> <span class="text-blue-300">on_init</span>(&amp;<span class="text-pink-400">mut self</span>, ctx: &amp;ModuleContext) -&gt; Result&lt;()&gt; {
+        ctx.request_capability(<span class="text-amber-300">"io.hardware.camera.stream"</span>)?;
+        ctx.subscribe_event(<span class="text-amber-300">"onMotionDetected"</span>, <span class="text-yellow-300">Self</span>::handle_motion)?;
+        myra_log!(<span class="text-amber-300">"Home_Security_Bot initialized inside L3 Enclave"</span>);
+        Ok(())
+    }
+}
+</code></pre>
+</div>
+
+<div class="flex items-center gap-2">
+  <button onclick="alert('Module checksum verified against core signature.')" class="flex-1 py-3 rounded-xl bg-cyan-400 hover:bg-cyan-300 text-black font-semibold font-mono text-xs flex items-center justify-center gap-1.5">
+    <span class="material-symbols-outlined text-base">verified</span>
+    <span>Verify Signature</span>
+  </button>
+  <a href="plugin-manager.html" class="px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-xs font-mono text-white/70 text-center">
+    Done
+  </a>
+</div>
+
+</body>
+</html>

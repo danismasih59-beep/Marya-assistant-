@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
+<title>Myra AI - Permission Auditor</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;700&family=Sora:wght@400;600;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet"/>
+<style>
+  body { background-color: #13131b; color: #e4e1ed; font-family: 'Be Vietnam Pro', sans-serif; min-height: 100dvh; }
+  .glass { background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(138, 235, 255, 0.2); backdrop-filter: blur(12px); }
+</style>
+</head>
+<body class="p-4 pb-24">
+
+<!-- Header -->
+<header class="flex items-center justify-between gap-3 mb-6 pt-2">
+  <div class="flex items-center gap-3">
+    <a href="index.html" class="p-2 rounded-xl bg-white/5 border border-white/10 hover:border-cyan-400 text-cyan-300">
+      <span class="material-symbols-outlined text-xl">arrow_back</span>
+    </a>
+    <div>
+      <h1 class="text-xl font-bold tracking-tight text-cyan-300" style="font-family:'Sora'">AUDIT_PERMS</h1>
+      <p class="text-[10px] font-mono text-cyan-400/80">SECURITY CAPABILITY AUDITOR</p>
+    </div>
+  </div>
+  <a href="security-dashboard.html" class="px-2.5 py-1 rounded-full bg-emerald-950/70 border border-emerald-500/30 text-emerald-300 text-xs font-mono">Overwatch</a>
+</header>
+
+<div class="glass rounded-2xl p-4 mb-4">
+  <div class="flex items-center justify-between mb-3">
+    <span class="font-mono text-xs text-white font-bold">Home_Security_Bot</span>
+    <span class="px-2 py-0.5 rounded bg-cyan-950 text-cyan-300 text-[10px] font-mono">3 GRANTED</span>
+  </div>
+  <div class="flex flex-col gap-2 font-mono text-[11px]">
+    <div class="p-2.5 rounded-lg bg-[#0d0d15] flex justify-between items-center text-white/80">
+      <span>io.hardware.camera.stream</span>
+      <span class="text-emerald-400">ALLOW</span>
+    </div>
+    <div class="p-2.5 rounded-lg bg-[#0d0d15] flex justify-between items-center text-white/80">
+      <span>storage.secure_vault.rw</span>
+      <span class="text-emerald-400">ALLOW</span>
+    </div>
+    <div class="p-2.5 rounded-lg bg-[#0d0d15] flex justify-between items-center text-white/80">
+      <span>telemetry.alerts.broadcast</span>
+      <span class="text-emerald-400">ALLOW</span>
+    </div>
+  </div>
+</div>
+
+<div class="glass rounded-2xl p-4 mb-6">
+  <div class="flex items-center justify-between mb-3">
+    <span class="font-mono text-xs text-white font-bold">Smart_Home_Bridge</span>
+    <span class="px-2 py-0.5 rounded bg-emerald-950 text-emerald-300 text-[10px] font-mono">2 GRANTED</span>
+  </div>
+  <div class="flex flex-col gap-2 font-mono text-[11px]">
+    <div class="p-2.5 rounded-lg bg-[#0d0d15] flex justify-between items-center text-white/80">
+      <span>network.lan.broadcast</span>
+      <span class="text-emerald-400">ALLOW</span>
+    </div>
+    <div class="p-2.5 rounded-lg bg-[#0d0d15] flex justify-between items-center text-white/80">
+      <span>automation.scheduler.hook</span>
+      <span class="text-emerald-400">ALLOW</span>
+    </div>
+  </div>
+</div>
+
+<button onclick="alert('All plugin capabilities cryptographically re-signed.')" class="w-full py-3.5 rounded-xl bg-cyan-400 hover:bg-cyan-300 text-black font-semibold font-mono text-xs flex items-center justify-center gap-2">
+  <span class="material-symbols-outlined text-base">verified</span>
+  <span>Run Zero-Trust Re-Verification</span>
+</button>
+
+</body>
+</html>

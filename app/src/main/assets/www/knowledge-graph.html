@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
+<title>Myra AI - Knowledge Graph</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;700&family=Sora:wght@400;600;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet"/>
+<style>
+  body { background-color: #13131b; color: #e4e1ed; font-family: 'Be Vietnam Pro', sans-serif; min-height: 100dvh; }
+  .glass { background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(138, 235, 255, 0.2); backdrop-filter: blur(12px); }
+  .node-orbit {
+    animation: floatOrbit 6s ease-in-out infinite alternate;
+  }
+  @keyframes floatOrbit {
+    0% { transform: translateY(0px); }
+    100% { transform: translateY(-8px); }
+  }
+</style>
+</head>
+<body class="p-4 pb-24">
+
+<!-- Header -->
+<header class="flex items-center justify-between gap-3 mb-6 pt-2">
+  <div class="flex items-center gap-3">
+    <a href="index.html" class="p-2 rounded-xl bg-white/5 border border-white/10 hover:border-cyan-400 text-cyan-300">
+      <span class="material-symbols-outlined text-xl">arrow_back</span>
+    </a>
+    <div>
+      <h1 class="text-xl font-bold tracking-tight text-cyan-300" style="font-family:'Sora'">KNOWLEDGE_GRAPH</h1>
+      <p class="text-[10px] font-mono text-cyan-400/80">SYNAPSE VECTOR MAP • 512 NODES</p>
+    </div>
+  </div>
+  <span class="px-2 py-0.5 rounded bg-cyan-950 text-cyan-300 text-xs font-mono border border-cyan-500/30">PROJECT TITAN</span>
+</header>
+
+<!-- Interactive Canvas Simulation -->
+<div class="glass rounded-2xl p-5 mb-6 h-64 relative overflow-hidden flex items-center justify-center bg-[#0d0d15] border-cyan-400/30">
+  <div class="absolute inset-0 bg-[radial-gradient(#22d3ee15_1px,transparent_1px)] [background-size:16px_16px]"></div>
+  
+  <!-- Central Hub Node -->
+  <div class="relative z-10 w-20 h-20 rounded-2xl bg-cyan-950/80 border-2 border-cyan-400 flex flex-col items-center justify-center text-cyan-300 shadow-[0_0_20px_rgba(34,211,238,0.4)]">
+    <span class="material-symbols-outlined text-2xl">hub</span>
+    <span class="text-[9px] font-mono font-bold mt-1">TITAN_CORE</span>
+  </div>
+
+  <!-- Connected Satellite Nodes -->
+  <div class="absolute top-6 left-8 z-10 p-2 rounded-xl bg-[#1b1b23] border border-cyan-500/40 text-[10px] font-mono text-cyan-200 node-orbit flex items-center gap-1">
+    <span class="w-1.5 h-1.5 rounded-full bg-cyan-400"></span>
+    <span>Security_Bot</span>
+  </div>
+
+  <div class="absolute bottom-6 left-12 z-10 p-2 rounded-xl bg-[#1b1b23] border border-indigo-500/40 text-[10px] font-mono text-indigo-200 node-orbit flex items-center gap-1" style="animation-delay: 1s;">
+    <span class="w-1.5 h-1.5 rounded-full bg-indigo-400"></span>
+    <span>Gemini_1.5</span>
+  </div>
+
+  <div class="absolute top-10 right-8 z-10 p-2 rounded-xl bg-[#1b1b23] border border-emerald-500/40 text-[10px] font-mono text-emerald-200 node-orbit flex items-center gap-1" style="animation-delay: 2s;">
+    <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+    <span>IoT_LAN_Mesh</span>
+  </div>
+
+  <div class="absolute bottom-8 right-10 z-10 p-2 rounded-xl bg-[#1b1b23] border border-amber-500/40 text-[10px] font-mono text-amber-200 node-orbit flex items-center gap-1" style="animation-delay: 1.5s;">
+    <span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span>
+    <span>Vault_Enclave</span>
+  </div>
+
+  <!-- Vector lines (SVG) -->
+  <svg class="absolute inset-0 w-full h-full pointer-events-none opacity-40">
+    <line x1="50%" y1="50%" x2="25%" y2="20%" stroke="#22d3ee" stroke-width="1.5" stroke-dasharray="4"/>
+    <line x1="50%" y1="50%" x2="25%" y2="80%" stroke="#818cf8" stroke-width="1.5" stroke-dasharray="4"/>
+    <line x1="50%" y1="50%" x2="75%" y2="25%" stroke="#34d399" stroke-width="1.5" stroke-dasharray="4"/>
+    <line x1="50%" y1="50%" x2="75%" y2="75%" stroke="#fbbf24" stroke-width="1.5" stroke-dasharray="4"/>
+  </svg>
+</div>
+
+<!-- Node Details Panel -->
+<div class="glass rounded-2xl p-5 mb-6 flex flex-col gap-3 font-mono text-xs">
+  <div class="flex items-center justify-between pb-3 border-b border-white/10">
+    <span class="text-cyan-300 font-bold uppercase">Node Metadata: TITAN_CORE</span>
+    <span class="text-emerald-400">HEALTH: 100%</span>
+  </div>
+  <div class="grid grid-cols-2 gap-2 text-[11px]">
+    <div class="p-2.5 rounded-xl bg-[#0d0d15]">
+      <span class="text-white/40 block text-[9px]">EMBEDDING DIMS</span>
+      <span class="text-white">1536 (Float32)</span>
+    </div>
+    <div class="p-2.5 rounded-xl bg-[#0d0d15]">
+      <span class="text-white/40 block text-[9px]">COSINE SIMILARITY</span>
+      <span class="text-cyan-300">0.9842</span>
+    </div>
+  </div>
+</div>
+
+<a href="chat.html" class="w-full py-3.5 rounded-xl bg-cyan-400 hover:bg-cyan-300 text-black font-semibold font-mono text-xs flex items-center justify-center gap-2">
+  <span class="material-symbols-outlined text-base">psychology</span>
+  <span>Query Knowledge Graph via AI</span>
+</a>
+
+</body>
+</html>

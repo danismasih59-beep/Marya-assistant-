@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
+<title>Myra AI - Brain Dashboard</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;700&family=Sora:wght@400;600;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet"/>
+<style>
+  body { background-color: #13131b; color: #e4e1ed; font-family: 'Be Vietnam Pro', sans-serif; min-height: 100dvh; }
+  .glass { background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(138, 235, 255, 0.2); backdrop-filter: blur(12px); }
+  .synapse-node {
+    animation: glowPulse 3s infinite alternate;
+  }
+  @keyframes glowPulse {
+    0% { transform: scale(0.95); opacity: 0.7; }
+    100% { transform: scale(1.05); opacity: 1; filter: drop-shadow(0 0 10px #818cf8); }
+  }
+</style>
+</head>
+<body class="p-4 pb-24">
+
+<!-- Header -->
+<header class="flex items-center justify-between gap-3 mb-6 pt-2">
+  <div class="flex items-center gap-3">
+    <a href="index.html" class="p-2 rounded-xl bg-white/5 border border-white/10 hover:border-cyan-400 text-cyan-300">
+      <span class="material-symbols-outlined text-xl">arrow_back</span>
+    </a>
+    <div>
+      <h1 class="text-xl font-bold tracking-tight text-indigo-300" style="font-family:'Sora'">NEURAL_BRAIN</h1>
+      <p class="text-[10px] font-mono text-indigo-400/80">GEMINI ENGINE • COGNITIVE SYNAPSE</p>
+    </div>
+  </div>
+  <span class="px-2.5 py-1 rounded-full bg-indigo-950/70 text-indigo-300 border border-indigo-500/30 text-xs font-mono">1.2M TOKENS</span>
+</header>
+
+<!-- Brain Core Card -->
+<div class="glass rounded-2xl p-5 mb-6 border-indigo-500/30 relative overflow-hidden">
+  <div class="flex items-center justify-between">
+    <div>
+      <span class="text-xs font-mono text-indigo-400 uppercase tracking-wider">Active Model</span>
+      <h2 class="text-2xl font-bold text-white mt-0.5" style="font-family:'Sora'">Gemini 1.5 Pro Matrix</h2>
+      <p class="text-xs text-white/60 mt-1">Multi-modal reasoning &amp; autonomous agent planning</p>
+    </div>
+    <div class="w-14 h-14 rounded-2xl bg-indigo-950/60 border border-indigo-400/40 flex items-center justify-center text-indigo-300 synapse-node">
+      <span class="material-symbols-outlined text-3xl">psychology</span>
+    </div>
+  </div>
+
+  <div class="mt-4 pt-3 border-t border-white/10 grid grid-cols-3 gap-2 text-xs font-mono">
+    <div>
+      <span class="text-[9px] text-white/40 block">TEMPERATURE</span>
+      <span class="text-white font-semibold">0.40</span>
+    </div>
+    <div>
+      <span class="text-[9px] text-white/40 block">TOP-P</span>
+      <span class="text-white font-semibold">0.95</span>
+    </div>
+    <div>
+      <span class="text-[9px] text-white/40 block">THINKING BUDGET</span>
+      <span class="text-indigo-300 font-semibold">2,048 tk</span>
+    </div>
+  </div>
+</div>
+
+<!-- Context Window Capacity -->
+<div class="glass rounded-xl p-4 mb-6">
+  <div class="flex justify-between items-center text-xs font-mono mb-2">
+    <span class="text-white/70">CONTEXT WINDOW UTILIZATION</span>
+    <span class="text-indigo-300 font-bold">142,400 / 1,000,000</span>
+  </div>
+  <div class="w-full bg-white/10 h-2 rounded-full overflow-hidden">
+    <div class="bg-gradient-to-r from-cyan-400 to-indigo-400 h-full rounded-full" style="width: 14.2%"></div>
+  </div>
+  <p class="text-[10px] text-white/40 mt-2 font-mono">Retaining 42 entity memories across 8 active conversational sessions.</p>
+</div>
+
+<!-- Cognitive Task Pipeline -->
+<div class="flex items-center justify-between mb-3 px-1">
+  <h2 class="text-xs uppercase tracking-widest text-indigo-300 font-mono font-semibold">Active Reasoning Chains</h2>
+  <span class="text-[10px] text-white/40 font-mono">3 THREADS</span>
+</div>
+
+<div class="flex flex-col gap-2.5 mb-6 font-mono text-xs">
+  <div class="glass rounded-xl p-3.5 flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <span class="material-symbols-outlined text-indigo-400">psychology_alt</span>
+      <div>
+        <p class="text-white font-semibold text-xs">Task: IoT Routine Synthesis</p>
+        <p class="text-[10px] text-white/50">Deriving optimum evening lighting curves</p>
+      </div>
+    </div>
+    <span class="px-2 py-0.5 rounded bg-indigo-950 text-indigo-300 text-[10px]">THINKING</span>
+  </div>
+
+  <div class="glass rounded-xl p-3.5 flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <span class="material-symbols-outlined text-cyan-400">code_blocks</span>
+      <div>
+        <p class="text-white font-semibold text-xs">Task: WASM Bytecode Validator</p>
+        <p class="text-[10px] text-white/50">Verifying memory bounds of Home_Security_Bot</p>
+      </div>
+    </div>
+    <span class="px-2 py-0.5 rounded bg-cyan-950 text-cyan-300 text-[10px]">VERIFIED</span>
+  </div>
+</div>
+
+<a href="chat.html" class="w-full py-3 rounded-xl bg-indigo-500 hover:bg-indigo-400 text-white font-semibold font-mono text-xs flex items-center justify-center gap-2 shadow-[0_0_15px_rgba(99,102,241,0.4)]">
+  <span class="material-symbols-outlined text-base">chat</span>
+  <span>Open Neural Dialogue Terminal</span>
+</a>
+
+</body>
+</html>

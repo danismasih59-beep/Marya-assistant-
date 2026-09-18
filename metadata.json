@@ -1,0 +1,6 @@
+{
+  "name": "Myra AI",
+  "description": "Futuristic AI OS Core SDK and multi-module control hub featuring Plugin Manager, Command Center, Automations, and Cyberpunk Telemetry.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

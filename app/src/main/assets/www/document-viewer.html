@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
+<title>Myra AI - SDK Documentation</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;700&family=Sora:wght@400;600;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet"/>
+<style>
+  body { background-color: #13131b; color: #e4e1ed; font-family: 'Be Vietnam Pro', sans-serif; min-height: 100dvh; }
+  .glass { background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(138, 235, 255, 0.2); backdrop-filter: blur(12px); }
+</style>
+</head>
+<body class="p-4 pb-24">
+
+<!-- Header -->
+<header class="flex items-center justify-between gap-3 mb-6 pt-2">
+  <div class="flex items-center gap-3">
+    <a href="index.html" class="p-2 rounded-xl bg-white/5 border border-white/10 hover:border-cyan-400 text-cyan-300">
+      <span class="material-symbols-outlined text-xl">arrow_back</span>
+    </a>
+    <div>
+      <h1 class="text-xl font-bold tracking-tight text-cyan-300" style="font-family:'Sora'">MYRA_MANUAL</h1>
+      <p class="text-[10px] font-mono text-cyan-400/80">CORE ARCHITECTURE &amp; APIS</p>
+    </div>
+  </div>
+  <span class="text-xs font-mono text-white/50">v4.2.0</span>
+</header>
+
+<div class="glass rounded-2xl p-5 mb-5 flex flex-col gap-4">
+  <h2 class="text-base font-bold text-white font-mono">1. Zero-Trust Plugin Sandbox</h2>
+  <p class="text-xs text-white/70 leading-relaxed font-sans">
+    Every plugin running within Myra AI Core operates as a sandboxed WebAssembly (WASM) guest inside an isolated hardware-enclave boundary. Outbound TCP connections are blocked by default unless granted explicit <code class="text-cyan-300">network.external</code> scopes.
+  </p>
+</div>
+
+<div class="glass rounded-2xl p-5 mb-5 flex flex-col gap-4">
+  <h2 class="text-base font-bold text-white font-mono">2. Titan Mesh Protocol</h2>
+  <p class="text-xs text-white/70 leading-relaxed font-sans">
+    Distributed edge nodes share state using encrypted UDP gossip packets signed with ed25519 asymmetric keys. Synchronizations occur under 15ms latency across local wireless subnets.
+  </p>
+</div>
+
+<div class="glass rounded-2xl p-5 mb-6 flex flex-col gap-4">
+  <h2 class="text-base font-bold text-white font-mono">3. Gemini Cognitive Routing</h2>
+  <p class="text-xs text-white/70 leading-relaxed font-sans">
+    Natural language user directives are tokenized and streamed into Gemini 1.5 Pro to synthesize autonomous function calls and orchestration pipelines without human scripting.
+  </p>
+</div>
+
+<a href="index.html" class="w-full py-3.5 rounded-xl bg-cyan-400 hover:bg-cyan-300 text-black font-semibold font-mono text-xs flex items-center justify-center gap-2">
+  <span class="material-symbols-outlined text-base">arrow_back</span>
+  <span>Return to Hub</span>
+</a>
+
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
+<title>Myra AI - Activity Timeline</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;700&family=Sora:wght@400;600;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet"/>
+<style>
+  body { background-color: #13131b; color: #e4e1ed; font-family: 'Be Vietnam Pro', sans-serif; min-height: 100dvh; }
+  .glass { background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(138, 235, 255, 0.2); backdrop-filter: blur(12px); }
+</style>
+</head>
+<body class="p-4 pb-24">
+
+<!-- Header -->
+<header class="flex items-center justify-between gap-3 mb-6 pt-2">
+  <div class="flex items-center gap-3">
+    <a href="index.html" class="p-2 rounded-xl bg-white/5 border border-white/10 hover:border-cyan-400 text-cyan-300">
+      <span class="material-symbols-outlined text-xl">arrow_back</span>
+    </a>
+    <div>
+      <h1 class="text-xl font-bold tracking-tight text-cyan-300" style="font-family:'Sora'">CHRONO_LOG</h1>
+      <p class="text-[10px] font-mono text-cyan-400/80">SYSTEM EVENT TIMELINE</p>
+    </div>
+  </div>
+  <span class="text-xs font-mono text-white/50">TODAY</span>
+</header>
+
+<div class="relative pl-6 border-l border-cyan-500/30 ml-3 flex flex-col gap-6 font-mono text-xs">
+  
+  <!-- Event 1 -->
+  <div class="relative">
+    <div class="absolute -left-[31px] top-1 w-3 h-3 rounded-full bg-cyan-400 border-2 border-[#13131b] shadow-[0_0_8px_#22d3ee]"></div>
+    <span class="text-[10px] text-cyan-400 block mb-0.5">09:14:22 UTC</span>
+    <div class="glass rounded-xl p-3.5">
+      <p class="font-bold text-white">Security Overwatch Drill Passed</p>
+      <p class="text-[11px] text-white/60 mt-1 font-sans">Zero trust policy verification run across all active WASM plugins.</p>
+    </div>
+  </div>
+
+  <!-- Event 2 -->
+  <div class="relative">
+    <div class="absolute -left-[31px] top-1 w-3 h-3 rounded-full bg-indigo-400 border-2 border-[#13131b]"></div>
+    <span class="text-[10px] text-indigo-400 block mb-0.5">08:00:00 UTC</span>
+    <div class="glass rounded-xl p-3.5">
+      <p class="font-bold text-white">Morning AI Briefing Generated</p>
+      <p class="text-[11px] text-white/60 mt-1 font-sans">Gemini 1.5 synthesized schedule and IoT status for Danis.</p>
+    </div>
+  </div>
+
+  <!-- Event 3 -->
+  <div class="relative">
+    <div class="absolute -left-[31px] top-1 w-3 h-3 rounded-full bg-emerald-400 border-2 border-[#13131b]"></div>
+    <span class="text-[10px] text-emerald-400 block mb-0.5">07:30:15 UTC</span>
+    <div class="glass rounded-xl p-3.5">
+      <p class="font-bold text-white">LAN Mesh Discovery</p>
+      <p class="text-[11px] text-white/60 mt-1 font-sans">Discovered 2 new IoT devices on local subnet 192.168.1.0/24.</p>
+    </div>
+  </div>
+
+  <!-- Event 4 -->
+  <div class="relative">
+    <div class="absolute -left-[31px] top-1 w-3 h-3 rounded-full bg-white/40 border-2 border-[#13131b]"></div>
+    <span class="text-[10px] text-white/50 block mb-0.5">23:00:01 UTC (Yesterday)</span>
+    <div class="glass rounded-xl p-3.5">
+      <p class="font-bold text-white">Night Perimeter Armed</p>
+      <p class="text-[11px] text-white/60 mt-1 font-sans">Perimeter bot activated optical flow motion detectors.</p>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>

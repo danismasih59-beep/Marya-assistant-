@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
+<title>Myra AI - Hub</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;700&family=Sora:wght@400;600;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet"/>
+<style>
+  body {
+    background-color: #13131b;
+    color: #e4e1ed;
+    font-family: 'Be Vietnam Pro', sans-serif;
+    min-height: 100dvh;
+    -webkit-font-smoothing: antialiased;
+  }
+  .glass {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(138, 235, 255, 0.2);
+    backdrop-filter: blur(12px);
+    transition: all 0.2s ease;
+  }
+  .glass:active, .glass:hover {
+    border-color: #8aebff;
+    box-shadow: 0 0 15px rgba(34, 211, 238, 0.25), inset 0 0 12px rgba(34, 211, 238, 0.1);
+    transform: translateY(-1px);
+  }
+  .neon-text {
+    text-shadow: 0 0 10px rgba(34, 211, 238, 0.4);
+  }
+  .badge-pulse {
+    animation: pulseGlow 2s infinite ease-in-out;
+  }
+  @keyframes pulseGlow {
+    0%, 100% { opacity: 0.8; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.05); }
+  }
+</style>
+</head>
+<body class="p-4 pb-28">
+
+<!-- App Header -->
+<header class="flex items-center justify-between gap-3 mb-6 mt-2 pt-2">
+  <div class="flex items-center gap-3">
+    <div class="w-10 h-10 rounded-xl bg-[#22d3ee]/10 border border-[#22d3ee]/40 flex items-center justify-center">
+      <span class="material-symbols-outlined text-[#8aebff] text-2xl" style="font-variation-settings: 'FILL' 1;">terminal</span>
+    </div>
+    <div>
+      <h1 class="text-2xl font-bold tracking-tight text-[#8aebff] neon-text" style="font-family:'Sora',sans-serif">MYRA_AI</h1>
+      <span class="text-[10px] tracking-widest uppercase font-mono text-cyan-400/80">CORE_SDK v4.2.0 • ONLINE</span>
+    </div>
+  </div>
+  <a href="chat.html" class="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-cyan-950/60 border border-cyan-500/30 text-xs text-cyan-300 hover:border-cyan-400">
+    <span class="w-2 h-2 rounded-full bg-cyan-400 badge-pulse"></span>
+    <span class="font-mono">SYS_READY</span>
+  </a>
+</header>
+
+<!-- System Status Banner -->
+<div class="mb-6 p-4 rounded-2xl glass relative overflow-hidden">
+  <div class="absolute -right-8 -top-8 w-28 h-28 bg-cyan-500/10 rounded-full blur-xl pointer-events-none"></div>
+  <div class="flex justify-between items-start">
+    <div>
+      <p class="text-xs font-mono text-cyan-300 uppercase tracking-wider">AI Studio Android Core</p>
+      <p class="text-lg font-bold text-white mt-0.5" style="font-family:'Sora',sans-serif">Central Operations Hub</p>
+      <p class="text-xs text-white/60 mt-1">24 Active Modules • 0 Security Faults • Latency 14ms</p>
+    </div>
+    <span class="material-symbols-outlined text-[#8aebff] text-3xl opacity-80">hub</span>
+  </div>
+  <div class="mt-4 pt-3 border-t border-white/10 flex items-center justify-between text-xs font-mono text-white/70">
+    <span>MEM: 3.4GB / 8GB</span>
+    <span>SYNAPSE: 99.8%</span>
+    <span class="text-cyan-400">STATUS: STABLE</span>
+  </div>
+</div>
+
+<!-- Quick Search / Filter Bar -->
+<div class="relative mb-6">
+  <span class="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-white/40 text-lg">search</span>
+  <input id="searchInput" oninput="filterGrid(this.value)" placeholder="Search commands, modules, tools..."
+    class="w-full bg-[#1b1b23]/90 border border-white/10 rounded-xl py-2.5 pl-10 pr-4 text-sm text-white placeholder-white/40 focus:outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400 font-sans" />
+</div>
+
+<!-- Section: Primary Control Hubs -->
+<div class="section-group" data-title="Core Hubs">
+  <div class="flex items-center justify-between mb-3 px-1">
+    <h2 class="text-xs uppercase tracking-widest text-cyan-300/70 font-mono font-semibold">Primary Operations</h2>
+    <span class="text-[10px] text-white/40 font-mono">4 DESTINATIONS</span>
+  </div>
+  <div class="grid grid-cols-2 gap-3 mb-6">
+    <a href="command-center-v4.html" class="module-card glass rounded-xl p-4 flex flex-col gap-2 relative group">
+      <div class="w-10 h-10 rounded-lg bg-cyan-950/40 border border-cyan-500/20 flex items-center justify-center text-cyan-400">
+        <span class="material-symbols-outlined text-2xl">grid_view</span>
+      </div>
+      <div>
+        <h3 class="text-sm font-semibold text-white">Command Center</h3>
+        <p class="text-[11px] text-white/50">v4.0 Telemetry &amp; Node Matrix</p>
+      </div>
+    </a>
+
+    <a href="plugin-manager.html" class="module-card glass rounded-xl p-4 flex flex-col gap-2 relative group border-cyan-400/40 shadow-[0_0_12px_rgba(34,211,238,0.15)]">
+      <div class="w-10 h-10 rounded-lg bg-cyan-950/60 border border-cyan-400/50 flex items-center justify-center text-cyan-300">
+        <span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">settings_input_component</span>
+      </div>
+      <div>
+        <div class="flex items-center gap-1.5">
+          <h3 class="text-sm font-semibold text-white">Manage Plugins</h3>
+          <span class="w-1.5 h-1.5 rounded-full bg-cyan-400"></span>
+        </div>
+        <p class="text-[11px] text-white/50">Configure modules &amp; IoT bridge</p>
+      </div>
+    </a>
+
+    <a href="brain-dashboard.html" class="module-card glass rounded-xl p-4 flex flex-col gap-2 relative group">
+      <div class="w-10 h-10 rounded-lg bg-indigo-950/40 border border-indigo-500/20 flex items-center justify-center text-indigo-300">
+        <span class="material-symbols-outlined text-2xl">psychology_alt</span>
+      </div>
+      <div>
+        <h3 class="text-sm font-semibold text-white">Brain Dashboard</h3>
+        <p class="text-[11px] text-white/50">Neural core &amp; reasoning weights</p>
+      </div>
+    </a>
+
+    <a href="security-dashboard.html" class="module-card glass rounded-xl p-4 flex flex-col gap-2 relative group">
+      <div class="w-10 h-10 rounded-lg bg-emerald-950/40 border border-emerald-500/20 flex items-center justify-center text-emerald-300">
+        <span class="material-symbols-outlined text-2xl">security</span>
+      </div>
+      <div>
+        <h3 class="text-sm font-semibold text-white">Overwatch Security</h3>
+        <p class="text-[11px] text-white/50">Threat scanner &amp; sandbox vault</p>
+      </div>
+    </a>
+  </div>
+</div>
+
+<!-- Section: Plugin Creation Wizard -->
+<div class="section-group" data-title="Plugin Wizard">
+  <div class="flex items-center justify-between mb-3 px-1">
+    <h2 class="text-xs uppercase tracking-widest text-cyan-300/70 font-mono font-semibold">Plugin Creation Wizard</h2>
+    <span class="text-[10px] text-white/40 font-mono">4 STEPS</span>
+  </div>
+  <div class="grid grid-cols-4 gap-2 mb-6">
+    <a href="plugin-wizard-1.html" class="module-card glass rounded-xl p-3 flex flex-col items-center text-center gap-1.5">
+      <span class="material-symbols-outlined text-cyan-400 text-xl">extension</span>
+      <span class="text-[11px] font-semibold text-white">1 · Basics</span>
+      <span class="text-[9px] text-white/40">Metadata</span>
+    </a>
+    <a href="plugin-wizard-2.html" class="module-card glass rounded-xl p-3 flex flex-col items-center text-center gap-1.5">
+      <span class="material-symbols-outlined text-cyan-400 text-xl">psychology</span>
+      <span class="text-[11px] font-semibold text-white">2 · Logic</span>
+      <span class="text-[9px] text-white/40">Triggers</span>
+    </a>
+    <a href="plugin-wizard-3.html" class="module-card glass rounded-xl p-3 flex flex-col items-center text-center gap-1.5">
+      <span class="material-symbols-outlined text-cyan-400 text-xl">shield</span>
+      <span class="text-[11px] font-semibold text-white">3 · Perms</span>
+      <span class="text-[9px] text-white/40">Sandbox</span>
+    </a>
+    <a href="plugin-wizard-4.html" class="module-card glass rounded-xl p-3 flex flex-col items-center text-center gap-1.5">
+      <span class="material-symbols-outlined text-cyan-400 text-xl">rocket_launch</span>
+      <span class="text-[11px] font-semibold text-white">4 · Deploy</span>
+      <span class="text-[9px] text-white/40">Release</span>
+    </a>
+  </div>
+</div>
+
+<!-- Section: Automation Engine -->
+<div class="section-group" data-title="Automation">
+  <div class="flex items-center justify-between mb-3 px-1">
+    <h2 class="text-xs uppercase tracking-widest text-cyan-300/70 font-mono font-semibold">Automation &amp; Routines</h2>
+    <span class="text-[10px] text-white/40 font-mono">WORKFLOWS</span>
+  </div>
+  <div class="grid grid-cols-2 gap-3 mb-6">
+    <a href="automation-studio.html" class="module-card glass rounded-xl p-4 flex flex-col gap-2">
+      <span class="material-symbols-outlined text-cyan-400 text-2xl">bolt</span>
+      <div>
+        <h3 class="text-sm font-semibold text-white">Automation Studio</h3>
+        <p class="text-[11px] text-white/50">Visual node flow orchestrator</p>
+      </div>
+    </a>
+    <a href="automation-new.html" class="module-card glass rounded-xl p-4 flex flex-col gap-2">
+      <span class="material-symbols-outlined text-cyan-400 text-2xl">add_circle</span>
+      <div>
+        <h3 class="text-sm font-semibold text-white">New Routine</h3>
+        <p class="text-[11px] text-white/50">Compose pipeline triggers</p>
+      </div>
+    </a>
+    <a href="automation-time.html" class="module-card glass rounded-xl p-4 flex flex-col gap-2">
+      <span class="material-symbols-outlined text-cyan-400 text-2xl">schedule</span>
+      <div>
+        <h3 class="text-sm font-semibold text-white">Time Trigger</h3>
+        <p class="text-[11px] text-white/50">Configure cron &amp; schedules</p>
+      </div>
+    </a>
+    <a href="automation-action.html" class="module-card glass rounded-xl p-4 flex flex-col gap-2">
+      <span class="material-symbols-outlined text-cyan-400 text-2xl">play_circle</span>
+      <div>
+        <h3 class="text-sm font-semibold text-white">Select Action</h3>
+        <p class="text-[11px] text-white/50">Device payload dispatcher</p>
+      </div>
+    </a>
+  </div>
+</div>
+
+<!-- Section: Intelligence & Tools -->
+<div class="section-group" data-title="Tools">
+  <div class="flex items-center justify-between mb-3 px-1">
+    <h2 class="text-xs uppercase tracking-widest text-cyan-300/70 font-mono font-semibold">Intelligence &amp; Diagnostics</h2>
+    <span class="text-[10px] text-white/40 font-mono">CORE UTILS</span>
+  </div>
+  <div class="grid grid-cols-2 gap-3 mb-6">
+    <a href="knowledge-graph.html" class="module-card glass rounded-xl p-4 flex flex-col gap-2">
+      <span class="material-symbols-outlined text-cyan-400 text-2xl">hub</span>
+      <div>
+        <h3 class="text-sm font-semibold text-white">Knowledge Graph</h3>
+        <p class="text-[11px] text-white/50">Semantic vector entities</p>
+      </div>
+    </a>
+    <a href="chat.html" class="module-card glass rounded-xl p-4 flex flex-col gap-2">
+      <span class="material-symbols-outlined text-cyan-400 text-2xl">chat</span>
+      <div>
+        <h3 class="text-sm font-semibold text-white">Neural Chat</h3>
+        <p class="text-[11px] text-white/50">Direct conversational console</p>
+      </div>
+    </a>
+    <a href="timeline.html" class="module-card glass rounded-xl p-4 flex flex-col gap-2">
+      <span class="material-symbols-outlined text-cyan-400 text-2xl">view_timeline</span>
+      <div>
+        <h3 class="text-sm font-semibold text-white">Telemetry Timeline</h3>
+        <p class="text-[11px] text-white/50">Execution stream &amp; events</p>
+      </div>
+    </a>
+    <a href="permission-auditor.html" class="module-card glass rounded-xl p-4 flex flex-col gap-2">
+      <span class="material-symbols-outlined text-cyan-400 text-2xl">policy</span>
+      <div>
+        <h3 class="text-sm font-semibold text-white">Permission Auditor</h3>
+        <p class="text-[11px] text-white/50">Zero-trust access policy</p>
+      </div>
+    </a>
+    <a href="code-viewer.html" class="module-card glass rounded-xl p-4 flex flex-col gap-2">
+      <span class="material-symbols-outlined text-cyan-400 text-2xl">code</span>
+      <div>
+        <h3 class="text-sm font-semibold text-white">Code Viewer</h3>
+        <p class="text-[11px] text-white/50">SDK source &amp; live runtime</p>
+      </div>
+    </a>
+    <a href="document-viewer.html" class="module-card glass rounded-xl p-4 flex flex-col gap-2">
+      <span class="material-symbols-outlined text-cyan-400 text-2xl">description</span>
+      <div>
+        <h3 class="text-sm font-semibold text-white">Document Viewer</h3>
+        <p class="text-[11px] text-white/50">Titan specs &amp; system docs</p>
+      </div>
+    </a>
+    <a href="enterprise.html" class="module-card glass rounded-xl p-4 flex flex-col gap-2">
+      <span class="material-symbols-outlined text-cyan-400 text-2xl">business</span>
+      <div>
+        <h3 class="text-sm font-semibold text-white">Enterprise Workspace</h3>
+        <p class="text-[11px] text-white/50">Multi-tenant agent fleet</p>
+      </div>
+    </a>
+    <a href="ambient-core.html" class="module-card glass rounded-xl p-4 flex flex-col gap-2">
+      <span class="material-symbols-outlined text-cyan-400 text-2xl">graphic_eq</span>
+      <div>
+        <h3 class="text-sm font-semibold text-white">Ambient Core</h3>
+        <p class="text-[11px] text-white/50">Audio wave &amp; pulse sensors</p>
+      </div>
+    </a>
+  </div>
+</div>
+
+<!-- Bottom Navigation Bar -->
+<nav class="bg-[#0d0d15]/90 backdrop-blur-lg border-t border-white/10 shadow-[0_-4px_20px_rgba(0,0,0,0.6)] fixed bottom-0 left-0 right-0 w-full z-50 flex justify-around items-center h-16 px-4">
+  <a href="index.html" class="flex flex-col items-center justify-center text-cyan-300 transition-colors">
+    <span class="material-symbols-outlined text-xl" style="font-variation-settings: 'FILL' 1;">terminal</span>
+    <span class="text-[10px] font-mono mt-0.5 font-bold">Hub</span>
+  </a>
+  <a href="command-center-v4.html" class="flex flex-col items-center justify-center text-white/50 hover:text-cyan-300 transition-colors">
+    <span class="material-symbols-outlined text-xl">analytics</span>
+    <span class="text-[10px] font-mono mt-0.5">Metrics</span>
+  </a>
+  <a href="plugin-manager.html" class="flex flex-col items-center justify-center text-white/50 hover:text-cyan-300 transition-colors">
+    <span class="material-symbols-outlined text-xl">settings_input_component</span>
+    <span class="text-[10px] font-mono mt-0.5">Plugins</span>
+  </a>
+  <a href="automation-studio.html" class="flex flex-col items-center justify-center text-white/50 hover:text-cyan-300 transition-colors">
+    <span class="material-symbols-outlined text-xl">bolt</span>
+    <span class="text-[10px] font-mono mt-0.5">Studio</span>
+  </a>
+  <a href="chat.html" class="flex flex-col items-center justify-center text-white/50 hover:text-cyan-300 transition-colors">
+    <span class="material-symbols-outlined text-xl">chat</span>
+    <span class="text-[10px] font-mono mt-0.5">Chat</span>
+  </a>
+</nav>
+
+<script>
+  function filterGrid(query) {
+    const q = query.toLowerCase().trim();
+    const cards = document.querySelectorAll('.module-card');
+    cards.forEach(card => {
+      const text = card.textContent.toLowerCase();
+      if (!q || text.includes(q)) {
+        card.style.display = 'flex';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
+<title>Myra AI - Neural Chat</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;700&family=Sora:wght@400;600;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet"/>
+<style>
+  body { background-color: #13131b; color: #e4e1ed; font-family: 'Be Vietnam Pro', sans-serif; min-height: 100dvh; }
+  .glass { background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(138, 235, 255, 0.2); backdrop-filter: blur(12px); }
+</style>
+</head>
+<body class="flex flex-col h-screen overflow-hidden p-4">
+
+<!-- Chat Header -->
+<header class="flex items-center justify-between gap-3 pb-3 border-b border-white/10 shrink-0">
+  <div class="flex items-center gap-3">
+    <a href="index.html" class="p-2 rounded-xl bg-white/5 border border-white/10 hover:border-cyan-400 text-cyan-300">
+      <span class="material-symbols-outlined text-xl">arrow_back</span>
+    </a>
+    <div>
+      <h1 class="text-lg font-bold tracking-tight text-[#8aebff]" style="font-family:'Sora'">MYRA_AGENT</h1>
+      <p class="text-[10px] font-mono text-cyan-400/80">GEMINI_1.5_PRO • MULTI-MODAL REASONING</p>
+    </div>
+  </div>
+  <a href="brain-dashboard.html" class="flex items-center gap-1 px-2.5 py-1 rounded-full bg-indigo-950/60 border border-indigo-500/30 text-xs text-indigo-300 font-mono">
+    <span class="w-2 h-2 rounded-full bg-indigo-400 animate-pulse"></span>
+    <span>Brain</span>
+  </a>
+</header>
+
+<!-- Chat Message Stream -->
+<div id="chatMessages" class="flex-1 overflow-y-auto py-4 flex flex-col gap-3.5 pr-1">
+  
+  <!-- AI Message -->
+  <div class="flex items-start gap-2.5 max-w-[90%]">
+    <div class="w-8 h-8 rounded-lg bg-cyan-950/70 border border-cyan-400/40 flex items-center justify-center text-cyan-300 shrink-0 mt-0.5">
+      <span class="material-symbols-outlined text-base" style="font-variation-settings: 'FILL' 1;">terminal</span>
+    </div>
+    <div class="glass rounded-2xl p-3.5 text-xs text-white/90 leading-relaxed border-cyan-500/30">
+      <p class="font-semibold text-cyan-300 mb-1 font-mono text-[11px]">MYRA CORE OS:</p>
+      Greetings, Danis. All 24 core modules and background daemons are functioning within optimal parameters. What action would you like me to initiate?
+    </div>
+  </div>
+
+  <!-- User Message -->
+  <div class="flex items-start gap-2.5 max-w-[85%] self-end">
+    <div class="bg-cyan-500/20 border border-cyan-400/50 rounded-2xl p-3.5 text-xs text-cyan-100 leading-relaxed">
+      Audit Home_Security_Bot permissions and report system health.
+    </div>
+  </div>
+
+  <!-- AI Message with Telemetry Box -->
+  <div class="flex items-start gap-2.5 max-w-[90%]">
+    <div class="w-8 h-8 rounded-lg bg-cyan-950/70 border border-cyan-400/40 flex items-center justify-center text-cyan-300 shrink-0 mt-0.5">
+      <span class="material-symbols-outlined text-base" style="font-variation-settings: 'FILL' 1;">terminal</span>
+    </div>
+    <div class="glass rounded-2xl p-3.5 text-xs text-white/90 leading-relaxed border-cyan-500/30 flex flex-col gap-2">
+      <p class="font-semibold text-cyan-300 font-mono text-[11px]">MYRA CORE OS:</p>
+      <p>Audit completed in <strong>18ms</strong>. Overwatch reports zero-trust policy compliance:</p>
+      <div class="bg-[#0d0d15] p-2.5 rounded-xl border border-white/10 font-mono text-[10px] text-white/80">
+        • Sandbox: WASM isolated enclave<br/>
+        • Camera: stream read only (buffer locked)<br/>
+        • Vault: SHA-256 HMAC authenticated<br/>
+        • Network: No external sockets open
+      </div>
+      <p>Status: <span class="text-emerald-400 font-mono font-bold">100% SECURE</span></p>
+    </div>
+  </div>
+
+</div>
+
+<!-- Suggested Quick Commands -->
+<div class="flex items-center gap-2 overflow-x-auto pb-2 shrink-0 font-mono text-[11px]">
+  <button onclick="sendQuickPrompt('Check IoT sensor status')" class="px-3 py-1.5 rounded-full bg-white/5 border border-white/10 hover:border-cyan-400 text-white/70 whitespace-nowrap">
+    📡 Sensor Status
+  </button>
+  <button onclick="sendQuickPrompt('Run memory cache flush')" class="px-3 py-1.5 rounded-full bg-white/5 border border-white/10 hover:border-cyan-400 text-white/70 whitespace-nowrap">
+    ⚡ Flush Cache
+  </button>
+  <button onclick="sendQuickPrompt('Show active Titan Mesh nodes')" class="px-3 py-1.5 rounded-full bg-white/5 border border-white/10 hover:border-cyan-400 text-white/70 whitespace-nowrap">
+    🌐 Mesh Topology
+  </button>
+</div>
+
+<!-- Input Bar -->
+<div class="shrink-0 pt-2 border-t border-white/10">
+  <form onsubmit="handleSend(event)" class="flex items-center gap-2">
+    <input id="chatInput" type="text" placeholder="Issue directive to Myra OS..."
+      class="flex-1 bg-[#1b1b23] border border-white/15 rounded-xl px-4 py-3 text-sm text-white placeholder-white/40 focus:outline-none focus:border-cyan-400 font-sans" />
+    <button type="submit" class="w-12 h-12 rounded-xl bg-cyan-400 hover:bg-cyan-300 text-black flex items-center justify-center shadow-[0_0_12px_rgba(34,211,238,0.4)]">
+      <span class="material-symbols-outlined text-xl">send</span>
+    </button>
+  </form>
+</div>
+
+<script>
+  function handleSend(e) {
+    e.preventDefault();
+    const input = document.getElementById('chatInput');
+    const msg = input.value.trim();
+    if (!msg) return;
+    input.value = '';
+    appendMessage('user', msg);
+
+    setTimeout(() => {
+      let reply = "Executing directive: \"" + msg + "\". Task dispatched to Titan Mesh node alpha. All responses verified.";
+      if (msg.toLowerCase().includes('sensor')) {
+        reply = "32 LAN IoT sensors polling nominally. Ambient temperature 21.4°C, humidity 48%, noise floor 32dB.";
+      } else if (msg.toLowerCase().includes('cache')) {
+        reply = "Cache purged across 4 memory tiers. 620MB reclaimed, zero context loss.";
+      } else if (msg.toLowerCase().includes('mesh')) {
+        reply = "Titan Mesh consists of 16 distributed cluster nodes. Latency variance ±1.2ms.";
+      }
+      appendMessage('ai', reply);
+    }, 600);
+  }
+
+  function sendQuickPrompt(txt) {
+    document.getElementById('chatInput').value = txt;
+    handleSend(new Event('submit'));
+  }
+
+  function appendMessage(role, text) {
+    const container = document.getElementById('chatMessages');
+    const div = document.createElement('div');
+    if (role === 'user') {
+      div.className = "flex items-start gap-2.5 max-w-[85%] self-end";
+      div.innerHTML = `<div class="bg-cyan-500/20 border border-cyan-400/50 rounded-2xl p-3.5 text-xs text-cyan-100 leading-relaxed">${text}</div>`;
+    } else {
+      div.className = "flex items-start gap-2.5 max-w-[90%]";
+      div.innerHTML = `
+        <div class="w-8 h-8 rounded-lg bg-cyan-950/70 border border-cyan-400/40 flex items-center justify-center text-cyan-300 shrink-0 mt-0.5">
+          <span class="material-symbols-outlined text-base" style="font-variation-settings: 'FILL' 1;">terminal</span>
+        </div>
+        <div class="glass rounded-2xl p-3.5 text-xs text-white/90 leading-relaxed border-cyan-500/30">
+          <p class="font-semibold text-cyan-300 mb-1 font-mono text-[11px]">MYRA CORE OS:</p>
+          ${text}
+        </div>
+      `;
+    }
+    container.appendChild(div);
+    container.scrollTop = container.scrollHeight;
+  }
+</script>
+
+</body>
+</html>

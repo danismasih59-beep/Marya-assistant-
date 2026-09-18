@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Myra AI - Manage Plugins</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;700&amp;family=Sora:wght@400;600;700&amp;family=Space+Grotesk:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container-lowest": "#0d0d15",
+                    "error": "#ffb4ab",
+                    "on-primary-fixed": "#001f25",
+                    "on-surface": "#e4e1ed",
+                    "secondary": "#c0c1ff",
+                    "inverse-on-surface": "#303038",
+                    "text-muted": "rgba(255, 255, 255, 0.4)",
+                    "tertiary-fixed-dim": "#b9c8de",
+                    "surface-container": "#1f1f27",
+                    "outline-variant": "#3c494c",
+                    "tertiary-container": "#b3c2d8",
+                    "glass-fill": "rgba(255, 255, 255, 0.1)",
+                    "on-background": "#e4e1ed",
+                    "inverse-surface": "#e4e1ed",
+                    "on-secondary-fixed-variant": "#2f2ebe",
+                    "surface-variant": "#34343d",
+                    "primary-fixed-dim": "#2fd9f4",
+                    "on-tertiary-fixed": "#0e1c2d",
+                    "on-primary": "#00363e",
+                    "secondary-fixed": "#e1e0ff",
+                    "surface-alt": "#1B1B23",
+                    "background": "#13131b",
+                    "glow-cyan": "rgba(34, 211, 238, 0.3)",
+                    "on-secondary-container": "#b0b2ff",
+                    "on-error": "#690005",
+                    "tertiary-fixed": "#d5e4fa",
+                    "primary": "#8aebff",
+                    "on-tertiary": "#233143",
+                    "on-tertiary-container": "#425062",
+                    "glow-indigo": "rgba(99, 102, 241, 0.3)",
+                    "surface-bright": "#393841",
+                    "primary-container": "#22d3ee",
+                    "primary-fixed": "#a2eeff",
+                    "text-dim": "rgba(255, 255, 255, 0.7)",
+                    "surface": "#13131b",
+                    "on-error-container": "#ffdad6",
+                    "on-tertiary-fixed-variant": "#3a485a",
+                    "on-secondary-fixed": "#07006c",
+                    "surface-dim": "#13131b",
+                    "tertiary": "#cfdef4",
+                    "on-surface-variant": "#bbc9cd",
+                    "on-primary-fixed-variant": "#004e5a",
+                    "outline": "#859397",
+                    "on-secondary": "#1000a9",
+                    "inverse-primary": "#006877",
+                    "error-container": "#93000a",
+                    "surface-container-high": "#292932",
+                    "secondary-container": "#3131c0",
+                    "on-primary-container": "#005763",
+                    "surface-tint": "#2fd9f4",
+                    "surface-container-low": "#1b1b23",
+                    "secondary-fixed-dim": "#c0c1ff",
+                    "surface-container-highest": "#34343d"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "page-margin": "16px",
+                    "orb-glow-radius": "240px",
+                    "grid-gutter": "12px",
+                    "base": "8px",
+                    "orb-size": "160px",
+                    "component-gap": "12px",
+                    "section-gap": "24px"
+            },
+            "fontFamily": {
+                    "badge-meta": ["Space Grotesk", "monospace"],
+                    "headline-lg-mobile": ["Sora", "sans-serif"],
+                    "headline-lg": ["Sora", "sans-serif"],
+                    "body-chat": ["Be Vietnam Pro", "sans-serif"],
+                    "section-label": ["Space Grotesk", "sans-serif"],
+                    "subheading": ["Be Vietnam Pro", "sans-serif"],
+                    "label-grid": ["Space Grotesk", "monospace"]
+            }
+          }
+        }
+      }
+</script>
+<style>
+        body {
+            background-color: theme('colors.background');
+            color: theme('colors.on-surface');
+            -webkit-font-smoothing: antialiased;
+            min-height: max(884px, 100dvh);
+        }
+        
+        .glowing-card {
+            background-color: theme('colors.glass-fill');
+            border: 1px solid rgba(34, 211, 238, 0.2);
+            backdrop-filter: blur(12px);
+            transition: all 0.3s ease;
+        }
+        
+        .glowing-card:hover {
+            border-color: rgba(34, 211, 238, 1);
+            box-shadow: inset 0 0 15px theme('colors.glow-cyan');
+        }
+
+        .switch {
+          position: relative;
+          display: inline-block;
+          width: 44px;
+          height: 24px;
+        }
+
+        .switch input {
+          opacity: 0;
+          width: 0;
+          height: 0;
+        }
+
+        .slider {
+          position: absolute;
+          cursor: pointer;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background-color: theme('colors.surface-bright');
+          transition: .3s;
+          border-radius: 24px;
+        }
+
+        .slider:before {
+          position: absolute;
+          content: "";
+          height: 18px;
+          width: 18px;
+          left: 3px;
+          bottom: 3px;
+          background-color: theme('colors.on-surface');
+          transition: .3s;
+          border-radius: 50%;
+        }
+
+        input:checked + .slider {
+          background-color: theme('colors.primary');
+          box-shadow: 0 0 10px theme('colors.glow-cyan');
+        }
+
+        input:checked + .slider:before {
+          transform: translateX(20px);
+          background-color: theme('colors.on-primary');
+        }
+</style>
+</head>
+<body class="min-h-screen flex flex-col font-body-chat pt-20 pb-20 md:pb-0 md:pl-64">
+
+<!-- TopAppBar -->
+<header class="bg-background/80 backdrop-blur-xl border-b border-outline-variant/30 shadow-[0_4px_30px_rgba(0,0,0,0.5)] fixed top-0 w-full z-50 flex justify-between items-center px-4 md:px-6 h-20">
+  <div class="flex items-center gap-3">
+    <a href="index.html" class="flex items-center gap-2 p-1.5 rounded-lg bg-surface-bright/40 hover:bg-glass-fill border border-outline-variant/40 text-primary transition-colors" title="Back to Hub">
+      <span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">arrow_back</span>
+    </a>
+    <div class="flex items-center gap-2">
+      <span class="material-symbols-outlined text-primary text-xl" style="font-variation-settings: 'FILL' 1;">terminal</span>
+      <h1 class="font-headline-lg text-lg md:text-2xl tracking-tighter text-primary drop-shadow-[0_0_8px_rgba(34,211,238,0.4)]">MYRA_CORE_SDK</h1>
+    </div>
+  </div>
+  <div class="flex items-center gap-3">
+    <button onclick="triggerUpdateCheck()" class="flex items-center gap-1.5 bg-surface-bright/50 hover:bg-glass-fill border border-outline-variant/50 rounded-full px-3 py-1.5 text-xs transition-all text-text-dim hover:text-primary hover:border-primary/50">
+      <span class="material-symbols-outlined text-sm">update</span>
+      <span class="hidden sm:inline">Check for Updates</span>
+    </button>
+    <a href="index.html" class="w-9 h-9 rounded-full bg-surface-bright border border-outline-variant overflow-hidden flex items-center justify-center">
+      <span class="material-symbols-outlined text-primary text-lg">account_circle</span>
+    </a>
+  </div>
+</header>
+
+<!-- NavigationDrawer (Hidden on Mobile) -->
+<nav class="bg-surface-alt/95 backdrop-blur-2xl border-r border-outline-variant/20 shadow-2xl fixed left-0 top-0 h-full w-64 flex flex-col pt-24 hidden md:flex z-40">
+  <div class="px-6 mb-8">
+    <h2 class="font-headline-lg text-primary text-xl">SDK_OPERATIONS</h2>
+  </div>
+  <ul class="flex-1 flex flex-col gap-1">
+    <li>
+      <a class="text-text-dim hover:text-on-surface px-4 py-3 flex items-center gap-3 transition-all hover:bg-glass-fill" href="brain-dashboard.html">
+        <span class="material-symbols-outlined">health_metrics</span>
+        <span class="font-section-label text-sm">System Health</span>
+      </a>
+    </li>
+    <li>
+      <a class="text-text-dim hover:text-on-surface px-4 py-3 flex items-center gap-3 transition-all hover:bg-glass-fill" href="command-center-v4.html">
+        <span class="material-symbols-outlined">monitoring</span>
+        <span class="font-section-label text-sm">API Metrics</span>
+      </a>
+    </li>
+    <li>
+      <a class="bg-primary/10 text-primary border-l-4 border-primary px-4 py-3 flex items-center gap-3 hover:bg-glass-fill" href="plugin-manager.html">
+        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">extension</span>
+        <span class="font-section-label text-sm font-bold">Plugin Manager</span>
+      </a>
+    </li>
+    <li>
+      <a class="text-text-dim hover:text-on-surface px-4 py-3 flex items-center gap-3 transition-all hover:bg-glass-fill" href="code-viewer.html">
+        <span class="material-symbols-outlined">code</span>
+        <span class="font-section-label text-sm">Debug Console</span>
+      </a>
+    </li>
+    <li>
+      <a class="text-text-dim hover:text-on-surface px-4 py-3 flex items-center gap-3 transition-all hover:bg-glass-fill" href="document-viewer.html">
+        <span class="material-symbols-outlined">menu_book</span>
+        <span class="font-section-label text-sm">Documentation</span>
+      </a>
+    </li>
+  </ul>
+</nav>
+
+<!-- Main Content -->
+<main class="flex-1 p-page-margin max-w-5xl mx-auto w-full flex flex-col gap-section-gap relative z-10">
+
+  <!-- Success Toast -->
+  <div id="toastNotification" class="fixed top-24 left-1/2 -translate-x-1/2 z-[60] transition-opacity duration-300">
+    <div class="bg-surface-container-high/95 backdrop-blur-xl border border-primary/50 rounded-full px-5 py-2.5 flex items-center gap-2.5 shadow-[0_0_20px_rgba(34,211,238,0.3)]">
+      <span class="material-symbols-outlined text-primary text-base" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+      <span id="toastMsg" class="font-section-label text-on-surface text-xs tracking-wide">Configuration Saved Successfully</span>
+    </div>
+  </div>
+
+  <!-- Header & Search -->
+  <div class="flex flex-col gap-4 md:flex-row md:items-end justify-between mt-2">
+    <div>
+      <h2 class="font-headline-lg-mobile text-2xl md:font-headline-lg md:text-3xl text-on-surface mb-1">Manage Plugins</h2>
+      <p class="font-subheading text-sm text-text-dim">Configure installed modules, security hooks, and IoT integrations.</p>
+    </div>
+    <div class="flex items-center gap-3 w-full md:w-auto">
+      <div class="relative flex-1 md:w-72">
+        <span class="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-text-muted text-lg">search</span>
+        <input id="pluginSearch" oninput="searchPlugins(this.value)" class="w-full bg-glass-fill border border-outline-variant/50 rounded-full py-2.5 pl-10 pr-4 text-sm text-on-surface placeholder:text-text-muted focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all backdrop-blur-md" placeholder="Search modules..." type="text"/>
+      </div>
+      <a href="plugin-wizard-1.html" class="flex items-center gap-1.5 px-4 py-2.5 rounded-full bg-primary text-on-primary text-xs font-semibold hover:bg-primary-container transition-all shadow-[0_0_12px_rgba(34,211,238,0.3)]">
+        <span class="material-symbols-outlined text-base">add</span>
+        <span class="hidden sm:inline">New Plugin</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- Plugin Grid -->
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-grid-gutter" id="pluginGrid">
+
+    <!-- Plugin Card 1: Home_Security_Bot -->
+    <div class="plugin-card glowing-card rounded-xl p-5 flex flex-col gap-5 relative overflow-hidden group shadow-[0_0_15px_rgba(34,211,238,0.2)]" data-name="home security bot">
+      <div class="absolute -right-10 -top-10 w-32 h-32 bg-primary/10 rounded-full blur-2xl group-hover:bg-primary/20 transition-all duration-500"></div>
+      <div class="flex justify-between items-start">
+        <div class="flex items-center gap-3.5">
+          <div class="w-11 h-11 rounded-lg bg-surface-bright flex items-center justify-center border border-outline-variant/30 text-primary">
+            <span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">security</span>
+          </div>
+          <div>
+            <h3 class="font-section-label text-base text-on-surface">Home_Security_Bot</h3>
+            <span class="font-badge-meta text-[11px] text-text-dim">v2.4.1 • EXT-MODULE</span>
+          </div>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="px-2 py-0.5 rounded bg-primary/20 text-primary font-badge-meta text-[10px] border border-primary/30 shadow-[0_0_10px_rgba(34,211,238,0.2)]">ACTIVE • SECURE</span>
+          <a href="plugin-wizard-3.html" class="w-8 h-8 rounded-full hover:bg-glass-fill flex items-center justify-center text-text-dim hover:text-primary transition-colors">
+            <span class="material-symbols-outlined text-sm">settings</span>
+          </a>
+        </div>
+      </div>
+      <div class="flex flex-col gap-3.5 border-t border-outline-variant/20 pt-3.5">
+        <div class="flex justify-between items-center">
+          <div>
+            <p class="font-body-chat text-sm text-on-surface">Active Monitoring</p>
+            <p class="font-label-grid text-xs text-text-muted">Real-time camera and sensor analysis.</p>
+          </div>
+          <label class="switch">
+            <input checked="" type="checkbox" onchange="showToast('Active Monitoring state updated')"/>
+            <span class="slider"></span>
+          </label>
+        </div>
+        <div class="flex justify-between items-center">
+          <div>
+            <p class="font-body-chat text-sm text-on-surface">Vault Sync</p>
+            <p class="font-label-grid text-xs text-text-muted">Backup event logs to encrypted cloud.</p>
+          </div>
+          <label class="switch">
+            <input checked="" type="checkbox" onchange="showToast('Vault Sync state updated')"/>
+            <span class="slider"></span>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <!-- Plugin Card 2: Neural_Language_Core -->
+    <div class="plugin-card glowing-card rounded-xl p-5 flex flex-col gap-5 relative overflow-hidden group" data-name="neural language core">
+      <div class="flex justify-between items-start">
+        <div class="flex items-center gap-3.5">
+          <div class="w-11 h-11 rounded-lg bg-surface-bright flex items-center justify-center border border-outline-variant/30 text-text-dim">
+            <span class="material-symbols-outlined text-2xl">psychology</span>
+          </div>
+          <div>
+            <h3 class="font-section-label text-base text-on-surface">Neural_Language_Core</h3>
+            <span class="font-badge-meta text-[11px] text-text-dim">v1.1.0 • SYS-MODULE</span>
+          </div>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="px-2 py-0.5 rounded bg-surface-variant text-text-dim font-badge-meta text-[10px] border border-outline-variant/30">STANDBY</span>
+          <a href="brain-dashboard.html" class="w-8 h-8 rounded-full hover:bg-glass-fill flex items-center justify-center text-text-dim hover:text-primary transition-colors">
+            <span class="material-symbols-outlined text-sm">settings</span>
+          </a>
+        </div>
+      </div>
+      <div class="flex flex-col gap-3.5 border-t border-outline-variant/20 pt-3.5">
+        <div class="flex justify-between items-center">
+          <div>
+            <p class="font-body-chat text-sm text-on-surface">Deep Semantic Parse</p>
+            <p class="font-label-grid text-xs text-text-muted">Enhanced context retention.</p>
+          </div>
+          <label class="switch">
+            <input type="checkbox" onchange="showToast('Semantic Parse activated')"/>
+            <span class="slider"></span>
+          </label>
+        </div>
+        <div class="flex justify-between items-center">
+          <div>
+            <p class="font-body-chat text-sm text-on-surface">Polyglot Mode</p>
+            <p class="font-label-grid text-xs text-text-muted">Auto-translate foreign inputs.</p>
+          </div>
+          <label class="switch">
+            <input type="checkbox" onchange="showToast('Polyglot mode toggled')"/>
+            <span class="slider"></span>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <!-- Plugin Card 3: Smart_Home_Bridge -->
+    <div class="plugin-card glowing-card rounded-xl p-5 flex flex-col gap-5 relative overflow-hidden group" data-name="smart home bridge iot">
+      <div class="absolute -right-10 -top-10 w-32 h-32 bg-primary/10 rounded-full blur-2xl group-hover:bg-primary/20 transition-all duration-500"></div>
+      <div class="flex justify-between items-start">
+        <div class="flex items-center gap-3.5">
+          <div class="w-11 h-11 rounded-lg bg-surface-bright flex items-center justify-center border border-outline-variant/30 text-primary">
+            <span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">router</span>
+          </div>
+          <div>
+            <h3 class="font-section-label text-base text-on-surface">Smart_Home_Bridge</h3>
+            <span class="font-badge-meta text-[11px] text-text-dim">v3.0.2 • EXT-MODULE</span>
+          </div>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="px-2 py-0.5 rounded bg-primary/20 text-primary font-badge-meta text-[10px] border border-primary/30 shadow-[0_0_10px_rgba(34,211,238,0.2)]">ACTIVE</span>
+          <a href="automation-studio.html" class="w-8 h-8 rounded-full hover:bg-glass-fill flex items-center justify-center text-text-dim hover:text-primary transition-colors">
+            <span class="material-symbols-outlined text-sm">settings</span>
+          </a>
+        </div>
+      </div>
+      <div class="flex flex-col gap-3.5 border-t border-outline-variant/20 pt-3.5">
+        <div class="flex justify-between items-center">
+          <div>
+            <p class="font-body-chat text-sm text-on-surface">Local Network Broadcast</p>
+            <p class="font-label-grid text-xs text-text-muted">Discover IoT devices on LAN.</p>
+          </div>
+          <label class="switch">
+            <input checked="" type="checkbox" onchange="showToast('Local Network Broadcast updated')"/>
+            <span class="slider"></span>
+          </label>
+        </div>
+        <div class="flex justify-between items-center">
+          <div>
+            <p class="font-body-chat text-sm text-on-surface">Automated Routines</p>
+            <p class="font-label-grid text-xs text-text-muted">Execute scheduled home tasks.</p>
+          </div>
+          <label class="switch">
+            <input type="checkbox" onchange="showToast('Automated Routines updated')"/>
+            <span class="slider"></span>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <!-- Plugin Card 4: Quantum_Encryption_Vault -->
+    <div class="plugin-card glowing-card rounded-xl p-5 flex flex-col gap-5 relative overflow-hidden group" data-name="quantum encryption vault">
+      <div class="flex justify-between items-start">
+        <div class="flex items-center gap-3.5">
+          <div class="w-11 h-11 rounded-lg bg-surface-bright flex items-center justify-center border border-outline-variant/30 text-emerald-400">
+            <span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">lock</span>
+          </div>
+          <div>
+            <h3 class="font-section-label text-base text-on-surface">Quantum_Vault</h3>
+            <span class="font-badge-meta text-[11px] text-text-dim">v1.4.9 • CRYPTO-CORE</span>
+          </div>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="px-2 py-0.5 rounded bg-emerald-950/60 text-emerald-300 font-badge-meta text-[10px] border border-emerald-500/30">ARMED</span>
+          <a href="security-dashboard.html" class="w-8 h-8 rounded-full hover:bg-glass-fill flex items-center justify-center text-text-dim hover:text-primary transition-colors">
+            <span class="material-symbols-outlined text-sm">settings</span>
+          </a>
+        </div>
+      </div>
+      <div class="flex flex-col gap-3.5 border-t border-outline-variant/20 pt-3.5">
+        <div class="flex justify-between items-center">
+          <div>
+            <p class="font-body-chat text-sm text-on-surface">Zero-Knowledge Enclave</p>
+            <p class="font-label-grid text-xs text-text-muted">Hardware-backed keystore isolation.</p>
+          </div>
+          <label class="switch">
+            <input checked="" type="checkbox" onchange="showToast('Enclave security verified')"/>
+            <span class="slider"></span>
+          </label>
+        </div>
+        <div class="flex justify-between items-center">
+          <div>
+            <p class="font-body-chat text-sm text-on-surface">Auto Key Rotation</p>
+            <p class="font-label-grid text-xs text-text-muted">Generate ephemeral 512-bit keys.</p>
+          </div>
+          <label class="switch">
+            <input checked="" type="checkbox" onchange="showToast('Key rotation schedule active')"/>
+            <span class="slider"></span>
+          </label>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="bg-surface-container-lowest/90 backdrop-blur-lg border-t border-outline-variant/30 shadow-[0_-4px_20px_rgba(0,0,0,0.6)] fixed bottom-0 w-full z-50 md:hidden flex justify-around items-center h-16 px-4">
+  <a href="ambient-core.html" class="flex flex-col items-center justify-center text-text-muted hover:text-primary-fixed active:scale-90 transition-transform">
+    <span class="material-symbols-outlined">favorite</span>
+    <span class="font-label-grid text-[10px] mt-0.5">Pulse</span>
+  </a>
+  <a href="command-center-v4.html" class="flex flex-col items-center justify-center text-text-muted hover:text-primary-fixed active:scale-90 transition-transform">
+    <span class="material-symbols-outlined">analytics</span>
+    <span class="font-label-grid text-[10px] mt-0.5">Metrics</span>
+  </a>
+  <a href="plugin-manager.html" class="flex flex-col items-center justify-center text-primary drop-shadow-[0_0_5px_rgba(34,211,238,0.5)] active:scale-90 transition-transform">
+    <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">settings_input_component</span>
+    <span class="font-label-grid text-[10px] mt-0.5 font-bold">Plugins</span>
+  </a>
+  <a href="index.html" class="flex flex-col items-center justify-center text-text-muted hover:text-primary-fixed active:scale-90 transition-transform">
+    <span class="material-symbols-outlined">terminal</span>
+    <span class="font-label-grid text-[10px] mt-0.5">Hub</span>
+  </a>
+</nav>
+
+<script>
+  function showToast(msg) {
+    const toast = document.getElementById('toastNotification');
+    const toastMsg = document.getElementById('toastMsg');
+    if (toast && toastMsg) {
+      toastMsg.innerText = msg;
+      toast.style.opacity = '1';
+      setTimeout(() => {
+        toast.style.opacity = '0';
+      }, 2500);
+    }
+  }
+
+  function triggerUpdateCheck() {
+    showToast('Checking repository: All modules are on latest release (v4.2.0)');
+  }
+
+  function searchPlugins(query) {
+    const q = query.toLowerCase().trim();
+    const cards = document.querySelectorAll('.plugin-card');
+    cards.forEach(card => {
+      const name = card.getAttribute('data-name') || '';
+      const text = card.textContent.toLowerCase();
+      if (!q || name.includes(q) || text.includes(q)) {
+        card.style.display = 'flex';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  }
+
+  setTimeout(() => {
+    const toast = document.getElementById('toastNotification');
+    if (toast) toast.style.opacity = '0';
+  }, 3000);
+</script>
+
+</body>
+</html>

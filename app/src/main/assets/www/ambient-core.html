@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
+<title>Myra AI - Ambient Core</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;700&family=Sora:wght@400;600;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet"/>
+<style>
+  body { background-color: #0a0a0f; color: #e4e1ed; font-family: 'Be Vietnam Pro', sans-serif; min-height: 100dvh; }
+  .ambient-orb {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background: radial-gradient(circle, #22d3ee 0%, #6366f1 50%, transparent 75%);
+    filter: blur(15px);
+    animation: orbPulse 4s ease-in-out infinite alternate;
+  }
+  @keyframes orbPulse {
+    0% { transform: scale(0.85); opacity: 0.6; filter: blur(20px); }
+    50% { transform: scale(1.15); opacity: 0.95; filter: blur(12px); }
+    100% { transform: scale(0.85); opacity: 0.6; filter: blur(20px); }
+  }
+  .wave-bar {
+    animation: waveBounce 1.2s ease-in-out infinite alternate;
+  }
+  @keyframes waveBounce {
+    0% { height: 8px; }
+    100% { height: 38px; }
+  }
+</style>
+</head>
+<body class="flex flex-col items-center justify-between p-6 h-screen overflow-hidden">
+
+<!-- Header -->
+<header class="w-full flex items-center justify-between pt-2">
+  <a href="index.html" class="p-2 rounded-xl bg-white/5 border border-white/10 hover:border-cyan-400 text-cyan-300">
+    <span class="material-symbols-outlined text-xl">arrow_back</span>
+  </a>
+  <span class="text-xs font-mono text-cyan-300 tracking-widest">AMBIENT_LISTENING</span>
+  <span class="w-2.5 h-2.5 rounded-full bg-cyan-400 animate-ping"></span>
+</header>
+
+<!-- Center Orb & Status -->
+<div class="flex flex-col items-center justify-center my-auto relative">
+  <div class="ambient-orb"></div>
+  <div class="absolute inset-0 flex flex-col items-center justify-center text-center pointer-events-none">
+    <span class="text-3xl font-bold text-white tracking-wider" style="font-family:'Sora'">MYRA</span>
+    <span class="text-[11px] font-mono text-cyan-200 mt-1">Listening to environment...</span>
+  </div>
+</div>
+
+<!-- Audio Waveform Visualization -->
+<div class="flex items-center gap-1.5 h-12 mb-6">
+  <div class="w-1.5 bg-cyan-400 rounded-full wave-bar" style="animation-delay: 0.1s"></div>
+  <div class="w-1.5 bg-cyan-300 rounded-full wave-bar" style="animation-delay: 0.3s"></div>
+  <div class="w-1.5 bg-indigo-400 rounded-full wave-bar" style="animation-delay: 0.2s"></div>
+  <div class="w-1.5 bg-cyan-400 rounded-full wave-bar" style="animation-delay: 0.5s"></div>
+  <div class="w-1.5 bg-indigo-300 rounded-full wave-bar" style="animation-delay: 0.4s"></div>
+  <div class="w-1.5 bg-cyan-300 rounded-full wave-bar" style="animation-delay: 0.6s"></div>
+  <div class="w-1.5 bg-cyan-400 rounded-full wave-bar" style="animation-delay: 0.2s"></div>
+</div>
+
+<!-- Controls -->
+<div class="w-full flex flex-col gap-3">
+  <a href="chat.html" class="w-full py-3.5 rounded-xl bg-cyan-400 hover:bg-cyan-300 text-black font-semibold font-mono text-xs flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(34,211,238,0.4)]">
+    <span class="material-symbols-outlined text-base">chat</span>
+    <span>Switch to Interactive Text Terminal</span>
+  </a>
+  <a href="index.html" class="w-full py-2.5 rounded-xl bg-white/5 border border-white/10 text-white/60 font-mono text-xs text-center">
+    Standby Mode
+  </a>
+</div>
+
+</body>
+</html>
